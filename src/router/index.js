@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
 import Home from '@/layout/Home'
+// import Home1 from '@/layout/Home1'
 import Index from '@/views/Index'
 import Icon from '@/components/Icon'
 

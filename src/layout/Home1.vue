@@ -1,0 +1,154 @@
+<template>
+  <el-container id="main">
+    <el-header class="v-header">
+      <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
+    </el-header>
+    <el-container class="demo-container">
+      <el-aside :style="{width:isCollapse?'84px':'220px'}" class="horizontal-collapse-transition">
+        <el-menu background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+          <el-submenu index="1">
+            <div slot="title">
+              <i class="el-icon-location"></i>
+              <span slot="title">导航一</span>
+            </div>
+            <el-menu-item-group>
+              <span slot="title">分组一</span>
+              <el-menu-item index="1-1">选项1</el-menu-item>
+              <el-menu-item index="1-2">选项2</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group title="分组2">
+              <el-menu-item index="1-3">选项3</el-menu-item>
+            </el-menu-item-group>
+            <el-submenu index="1-4">
+              <span slot="title">选项4</span>
+              <el-menu-item index="1-4-1">选项1</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+          <el-menu-item index="2">
+            <i class="el-icon-menu"></i>
+            <span slot="title">导航二</span>
+          </el-menu-item>
+          <el-menu-item index="3" disabled>
+            <i class="el-icon-document"></i>
+            <span slot="title">导航三</span>
+          </el-menu-item>
+          <el-menu-item index="4">
+            <i class="el-icon-setting"></i>
+            <span slot="title">导航四</span>
+          </el-menu-item>
+        </el-menu>
+      </el-aside>
+      <el-main>
+        <router-view/>
+      </el-main>
+    </el-container>
+  </el-container>
+</template>
+<script>
+export default {
+  data() {
+    return {}
+  },
+  computed: {
+    isCollapse() {
+      return this.$store.state.sys.isCollapse
+    }
+  },
+  methods: {
+    handlerIsCollapse() {
+      this.$store.commit('IS_COLLAPSE')
+    },
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath)
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath)
+    }
+  },
+  mounted() { }
+}
+</script>
+<style>
+#main {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 100vh;
+  max-width: 200px;
+  min-width: 200px;
+  flex: 0 0 200px;
+}
+.v-header {
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.3);
+}
+.el-menu.el-menu-vertical-demo {
+  border-right: none;
+  min-height: 100vh;
+}
+.menu {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+}
+.demo-container {
+  padding-top: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.menu .iconfont {
+  font-size: 24px;
+  display: inline-block;
+  line-height: 60px;
+  height: 60px;
+}
+.el-menu--collapse {
+  max-width: 64px;
+  min-width: 64px;
+  flex: 0 0 64px;
+}
+.el-header,
+.el-footer {
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+.el-aside {
+  background-color: rgb(84, 92, 100);
+  color: #333;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e9e9e9;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* flex: 0 0 220px; */
+  position: relative;
+}
+.el-main {
+  background-color: #e9eef3;
+  color: #333;
+  text-align: center;
+  overflow-y: scroll;
+  margin-left: -20px;
+  margin-right: -20px;
+  z-index: 99;
+}
+.el-container {
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+</style>
