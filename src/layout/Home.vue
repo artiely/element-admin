@@ -109,7 +109,7 @@
      box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.3);
      background-color: rgb(84, 92, 100);
     color: #333;
-    text-align: center;
+    text-align: left;
     position: relative;
     z-index: 99;
   }
