@@ -45,82 +45,81 @@
   </el-container>
 </template>
 <script>
-  export default {
-    data() {
-      return {}
+export default {
+  data() {
+    return {}
+  },
+  computed: {
+    isCollapse() {
+      return this.$store.state.sys.isCollapse
+    }
+  },
+  methods: {
+    handlerIsCollapse() {
+      this.$store.commit('IS_COLLAPSE')
     },
-    computed: {
-      isCollapse() {
-        return this.$store.state.sys.isCollapse
-      }
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath)
     },
-    methods: {
-      handlerIsCollapse() {
-        this.$store.commit('IS_COLLAPSE')
-      },
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath)
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath)
-      }
-    },
-    mounted() {}
-  }
+    handleClose(key, keyPath) {
+      console.log(key, keyPath)
+    }
+  },
+  mounted() { }
+}
 </script>
 <style>
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
-    max-width: 200px;
-    min-width: 200px;
-    flex: 0 0 200px;
-  }
-  .el-menu.el-menu-vertical-demo {
-    border-right: none;
-    min-height: 100vh;
-   
-  }
-  .menu {
-    height: 60px;
-    width: 60px;
-    text-align: center;
-    cursor: pointer;
-    float: left;
-  }
-  .menu .iconfont {
-    font-size: 24px;
-    display: inline-block;
-    line-height: 60px;
-    height: 60px;
-  }
-  .el-menu--collapse {
-    max-width: 64px;
-    min-width: 64px;
-    flex: 0 0 64px;
-  }
-  .el-header,
-  .el-footer {
-    background-color: #b3c0d1;
-    color: #333;
-    text-align: center;
-  }
-  .el-aside {
-     box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.3);
-     background-color: rgb(84, 92, 100);
-    color: #333;
-    text-align: left;
-    position: relative;
-    z-index: 99;
-  }
-  .el-main {
-    background-color: #fff;
-    color: #333;
-    text-align: center;
-  }
-  .el-container {
-    height: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+  max-width: 200px;
+  min-width: 200px;
+  flex: 0 0 200px;
+}
+.el-menu.el-menu-vertical-demo {
+  border-right: none;
+  min-height: 100vh;
+}
+.menu {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+}
+.menu .iconfont {
+  font-size: 24px;
+  display: inline-block;
+  line-height: 60px;
+  height: 60px;
+}
+.el-menu--collapse {
+  max-width: 64px;
+  min-width: 64px;
+  flex: 0 0 64px;
+}
+.el-header,
+.el-footer {
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+}
+.el-aside {
+  box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.3);
+  background-color: rgb(84, 92, 100);
+  color: #333;
+  text-align: left;
+  position: relative;
+  z-index: 99;
+}
+.el-main {
+  background-color: #eee;
+  color: #333;
+  text-align: center;
+}
+.el-container {
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 </style>
