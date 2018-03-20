@@ -16,6 +16,8 @@
   "dependencies": {
     "@antv/data-set": "^0.8.6",
     "@antv/g2": "^3.0.5-beta.6",
+    "babel-polyfill": "^6.26.0",
+    "clipboard": "^2.0.0",
     "element-ui": "^2.2.2",
     "jquery": "^3.3.1",
     "viser-vue": "^2.2.1",

@@ -1,0 +1,27 @@
+const iconfont = [
+  {name: 'icon-wenjian-'},
+  {name: 'icon-sousuo-'},
+  {name: 'icon-shenfen-'},
+  {name: 'icon-shouru'},
+  {name: 'icon-shijian-'},
+  {name: 'icon-shangpin-'},
+  {name: 'icon-shezhi-'},
+  {name: 'icon-rongyu-'},
+  {name: 'icon-riqi-'},
+  {name: 'icon-nanshi-'},
+  {name: 'icon-nvshi-'},
+  {name: 'icon-mubiao-'},
+  {name: 'icon-hezuo-'},
+  {name: 'icon-goutong-'},
+  {name: 'icon-gongzuo-'},
+  {name: 'icon-linggan-'},
+  {name: 'icon-liwu-'},
+  {name: 'icon-jiangli-'},
+  {name: 'icon-ziliao-'},
+  {name: 'icon-biaoqian-'},
+  {name: 'icon-dangan-'},
+  {name: 'icon-dingwei-'},
+  {name: 'icon-fasong-'},
+  {name: 'icon-anquan-'}
+]
+export default iconfont

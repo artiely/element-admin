@@ -34,11 +34,7 @@
     </el-menu>
     <el-container>
       <el-header>
-        <div  @click="handlerIsCollapse">123{{isCollapse}}</div>
-        <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-          <el-radio-button :label="false">展开</el-radio-button>
-          <el-radio-button :label="true">收起</el-radio-button>
-        </el-radio-group> -->
+        <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse" ></v-icon>
       </el-header>
       <el-main>
         <router-view/>
@@ -67,6 +63,8 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath)
     }
+  },
+  mounted() {
   }
 }
 </script>
@@ -74,10 +72,31 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
+  max-width: 200px;
+  min-width: 200px;
+  flex: 0 0 200px;
 }
 .el-menu.el-menu-vertical-demo {
   border-right: none;
   box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.3);
+}
+.menu {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+}
+.menu .iconfont {
+  font-size: 24px;
+  display: inline-block;
+  line-height: 60px;
+  height: 60px;
+}
+.el-menu--collapse{
+  max-width: 64px;
+  min-width: 64px;
+  flex: 0 0 64px;
 }
 .el-header,
 .el-footer {
@@ -95,8 +114,10 @@ export default {
   color: #333;
   text-align: center;
 }
+
 .el-container {
   height: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 </style>

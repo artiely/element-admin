@@ -8,6 +8,8 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
 import ViserVue from 'viser-vue'
+import VueUI from './package/index'
+Vue.use(VueUI)
 Vue.use(ViserVue)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
