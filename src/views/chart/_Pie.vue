@@ -9,7 +9,21 @@ import {
 export default {
   data() {
     return {
-
+      chart: null
+    }
+  },
+  computed: {
+    isCollapse() {
+      return this.$store.state.sys.isCollapse
+    }
+  },
+  watch: {
+    'isCollapse': {
+      handler() {
+        setTimeout(() => {
+          this.chart.forceFit()
+        }, 400)
+      }
     }
   },
   methods: {
@@ -29,13 +43,13 @@ export default {
         dimension: 'item',
         as: 'percent'
       })
-      const chart = new G2.Chart({
+      this.chart = new G2.Chart({
         container: '_pie',
         forceFit: true,
         height: 100,
         padding: [0, 0, 0, 0]
       })
-      chart.source(dv, {
+      this.chart.source(dv, {
         percent: {
           formatter: val => {
             val = (val * 100) + '%'
@@ -43,12 +57,12 @@ export default {
           }
         }
       })
-      chart.coord('theta')
-      chart.tooltip({
+      this.chart.coord('theta')
+      this.chart.tooltip({
         showTitle: false,
         itemTpl: '<li><span style="background-color:{color};" class="g2-tooltip-marker"></span>{name}: {value}</li>'
       })
-      chart.intervalStack()
+      this.chart.intervalStack()
         .position('percent')
         .color('item')
         .label('percent', {
@@ -72,7 +86,7 @@ export default {
           lineWidth: 1,
           stroke: '#fff'
         })
-      chart.render()
+      this.chart.render()
     }
   },
   mounted() {

@@ -14,6 +14,20 @@ export default {
       data: data
     }
   },
+  computed: {
+    isCollapse() {
+      return this.$store.state.sys.isCollapse
+    }
+  },
+  watch: {
+    'isCollapse': {
+      handler() {
+        setTimeout(() => {
+          this.chart.forceFit()
+        }, 400)
+      }
+    }
+  },
   methods: {
     _chart() {
       const { Global } = G2

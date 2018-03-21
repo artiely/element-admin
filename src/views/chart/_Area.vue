@@ -6,7 +6,21 @@ import G2 from '@antv/g2'
 export default {
   data() {
     return {
-
+      chart: null
+    }
+  },
+  computed: {
+    isCollapse() {
+      return this.$store.state.sys.isCollapse
+    }
+  },
+  watch: {
+    'isCollapse': {
+      handler() {
+        setTimeout(() => {
+          this.chart.forceFit()
+        }, 400)
+      }
     }
   },
   methods: {
@@ -22,14 +36,14 @@ export default {
         { year: '1998', value: 32040 },
         { year: '1999', value: 33233 }
       ]
-      const chart = new G2.Chart({
+      this.chart = new G2.Chart({
         container: '_area',
         forceFit: true,
         height: 100,
         padding: [0, 0, 0, 0]
       })
-      chart.source(data)
-      chart.scale({
+      this.chart.source(data)
+      this.chart.scale({
         value: {
           min: 10000
         },
@@ -37,21 +51,21 @@ export default {
           range: [0, 1]
         }
       })
-      chart.axis('value', {
+      this.chart.axis('value', {
         label: {
           formatter: val => {
             return (val / 10000).toFixed(1) + 'k'
           }
         }
       })
-      chart.tooltip({
+      this.chart.tooltip({
         crosshairs: {
           type: 'line'
         }
       })
-      chart.area().position('year*value')
-      chart.line().position('year*value').size(2)
-      chart.render()
+      this.chart.area().position('year*value')
+      this.chart.line().position('year*value').size(2)
+      this.chart.render()
     }
   },
   mounted() {
