@@ -104,8 +104,8 @@ export default {
       this.chart2 = new G2.Chart({
         container: this.id,
         forceFit: true,
-        padding: [20, 20, 95, 40], // 上，右，下，左
-        height: 350
+        padding: [0, 0, 0, 0], // 上，右，下，左
+        height: 100
       })
       this.chart2.source(dv, {
         month: {

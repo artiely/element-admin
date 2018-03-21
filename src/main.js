@@ -11,7 +11,7 @@ import ViserVue from 'viser-vue'
 import VueUI from './package/index'
 Vue.use(VueUI)
 Vue.use(ViserVue)
-Vue.use(ElementUI)
+Vue.use(ElementUI, {size: 'small'})
 Vue.config.productionTip = false
 Vue.config.devtools = true
 /* eslint-disable no-new */

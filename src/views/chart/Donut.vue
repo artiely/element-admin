@@ -49,7 +49,7 @@ export default {
       this.chart = new G2.Chart({
         container: this.id,
         forceFit: true,
-        height: 300,
+        height: 350,
         animate: false
       })
       this.chart.source(dv, {

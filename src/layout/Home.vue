@@ -40,6 +40,7 @@
       </el-header>
       <el-main>
         <router-view/>
+        <el-footer>Copyright © 2018 Artiely</el-footer>
       </el-main>
     </el-container>
   </el-container>
@@ -98,11 +99,15 @@ export default {
   min-width: 64px;
   flex: 0 0 64px;
 }
-.el-header,
-.el-footer {
+.el-header{
   background-color: #fff;
   color: #333;
+}
+.el-footer{
+  line-height: 60px;
   text-align: center;
+  color: #666;
+  font-size: 16px;
 }
 .el-aside {
   box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.3);
@@ -115,7 +120,7 @@ export default {
 .el-main {
   background-color: #eee;
   color: #333;
-  text-align: center;
+  text-align: left;
 }
 .el-container {
   height: 100%;

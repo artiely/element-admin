@@ -53,7 +53,7 @@ export default {
         container: this.id, // 指定图表容器 ID
         forceFit: true,
         padding: [20, 20, 95, 40], // 上，右，下，左
-        height: 300 // 指定图表高度
+        height: 350 // 指定图表高度
       })
       // Step 2: 载入数据源
       this.chart1.source(this.data)

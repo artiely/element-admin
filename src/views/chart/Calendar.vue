@@ -91,7 +91,7 @@ export default {
       this.chart = new G2.Chart({
         container: this.id,
         forceFit: true,
-        height: 300
+        height: 350
       })
       this.chart.source(this.data, {
         day: {
