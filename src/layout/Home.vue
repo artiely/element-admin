@@ -15,6 +15,7 @@
     <el-container>
       <el-header>
         <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
+        <v-icon name="icon-tuichu1" class="logout" @click.native="logout"></v-icon>
       </el-header>
       <el-main>
         <router-view/>
@@ -24,6 +25,7 @@
   </el-container>
 </template>
 <script>
+import Cookies from 'js-cookie'
 export default {
   data() {
     return {}
@@ -48,12 +50,29 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath)
+    },
+    logout() {
+      Cookies.remove('userid')
+      // this.$store.commit('SET_MENU', null)
+      window.location.reload()
+      // this.$router.replace('/login')
     }
   },
   mounted() { }
 }
 </script>
 <style>
+.logout{
+  height: 60px;
+  width: 60px;
+  float: right;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+}
+.logout i{
+  font-size: 24px;
+}
 .el-submenu__title i{
   font-size: 24px;
   margin-right: 4px;

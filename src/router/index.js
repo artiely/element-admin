@@ -79,11 +79,10 @@ router.beforeEach((to, from, next) => {
   console.log(to, from)
   // 没有角色并且去的不是登录页 我们拉取角色 如果拉取不到角色 说明没有登录
   if (!store.state.sys.role && to.path !== '/login') {
-    console.log('---routereach')
     api.GET_USER_INFO().then(res => {
       if (res.code === 0) {
         store.commit('FILTER_ROLE', res.role)
-        constantRouterMap.push(...store.state.sys.menu)
+        // constantRouterMap.push(...store.state.sys.menu)
         router.addRoutes(store.state.sys.menu)
         next(...to)
       } else {
@@ -94,12 +93,10 @@ router.beforeEach((to, from, next) => {
   if (to.meta.auth) {
     // 登录验证 有token就一定有角色
     let token = Cookies.get('userid')
-    // let role = Cookies.get('role')
     if (token) {
-      // store.commit('FILTER_ROLE', role)
-      // constantRouterMap.push(...store.state.sys.menu)
-      // router.addRoutes(store.state.sys.menu)
-      console.log('走token')
+      if (to.path === '/login') {
+        next({path: '/index'})
+      }
       next({query: {redirect: to.fullPath}})
     } else {
       next({path: '/login', query: {redirect: to.fullPath}})

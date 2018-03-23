@@ -5,11 +5,8 @@
         <div class="markdown">
           <h1>IconFont 图标 <span style="font-size: 16px">点击图标复制代码到粘贴板</span></h1>
           <div>
-            <el-switch
-  v-model="isLabel"
-  active-text="复制标签"
-  inactive-text="复制类名">
-</el-switch>
+            <el-switch v-model="isLabel" active-text="复制标签" inactive-text="复制类名">
+            </el-switch>
           </div>
           <div class="icon_lists">
             <div>
@@ -18,8 +15,8 @@
             <el-row>
               <el-col>
                 <span class="icon-box" @click="clip(item,symbol)" v-for="(item) in symbol" :key="item.name">
-                    <v-icon :name="item.name" symbol></v-icon>
-                  </span>
+                      <v-icon :name="item.name" symbol></v-icon>
+                    </span>
               </el-col>
             </el-row>
             <div>
@@ -28,8 +25,8 @@
             <el-row>
               <el-col>
                 <span class="icon-box" @click="clip(item,null)" v-for="(item) in iconfont" :key="item.name">
-                    <v-icon :name="item.name"></v-icon>
-                  </span>
+                      <v-icon :name="item.name"></v-icon>
+                    </span>
               </el-col>
             </el-row>
           </div>
@@ -66,7 +63,6 @@ export default {
       } else {
         icon = type.name
       }
-
       console.log(icon)
       const clipboard = new Clipboard('.icon', {
         text() {

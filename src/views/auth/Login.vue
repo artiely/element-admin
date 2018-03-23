@@ -72,8 +72,11 @@ export default {
             return
           }
           let role = login.role
+          // 避免用户在地址栏输入登录地址改变角色
+          if(this.$store.state.sys.role && this.$store.state.sys.role!==role){
+            window.location.reload()
+          }
           this.$store.commit('FILTER_ROLE', role)
-          // let res = await this.$api.GET_MENU()
           // 登录成功 动态添加路由
           // let routs = res.data
           // for (let i = 0; i < routs.length; i++) {
@@ -85,8 +88,7 @@ export default {
           //   }
           // }
           this.$router.addRoutes(this.menu)
-          // this.$store.commit('SET_MENU', routs)
-          this.$router.push('index')
+          this.$router.replace('/index')
           this.loading = false
         } else {
           this.loading = false
