@@ -5,6 +5,7 @@ import Login from '@/views/auth/Login'
 import store from '@/store/index'
 import lazyLoading from './lazyLoading'
 import api from '../api/api'
+import NProgress from 'nprogress'
 Vue.use(Router)
 
 let constantRouterMap = [
@@ -16,6 +17,7 @@ let constantRouterMap = [
 ]
 
 const router = new Router({
+  scrollBehavior: () => ({y: 0}),
   routes: constantRouterMap
 })
 
@@ -23,12 +25,12 @@ export const asyncRouterMap = [
   {
     path: '/',
     name: 'Top',
-    component: lazyLoading('layout/Home'),
+    component: lazyLoading('layout/Home1'),
     redirect: '/index',
     meta: {
       role: ['admin', 'guest'],
       auth: true,
-      name: '顶级导航',
+      title: '顶级导航',
       icon: 'icon-createtask'
     },
     children: [
@@ -36,39 +38,34 @@ export const asyncRouterMap = [
         path: '/index',
         name: 'Index',
         component: lazyLoading('views/Index'),
-        meta: {role: ['admin', 'guest'], auth: true, name: '首页'}
+        meta: {role: ['admin', 'guest'], auth: true, title: '首页'}
       },
       {
         path: '/icon',
         name: 'Icon',
         component: lazyLoading('components/Icon'),
-        meta: {role: ['admin', 'guest'], auth: true, name: '字体图标'}
+        meta: {role: ['admin', 'guest'], auth: true, title: '字体图标'}
       },
       {
         path: '/dep',
         name: 'Dep',
         component: lazyLoading('views/sys/Dep'),
-        meta: {role: ['admin'], auth: true, name: '项目依赖'}
+        meta: {role: ['admin'], auth: true, title: '项目依赖'}
       }
     ]
   },
   {
     path: '/',
     name: 'Sys',
-    component: lazyLoading('layout/Home'),
-    meta: {
-      role: ['admin'],
-      auth: true,
-      name: '系统管理',
-      icon: 'icon-createtask'
-    },
+    component: lazyLoading('layout/Home1'),
+    meta: {role: ['admin'], auth: true, title: '系统管理', icon: 'icon-manage'},
     redirect: '/index',
     children: [
       {
         path: '/menu',
         name: 'Menu',
         component: lazyLoading('views/sys/Menu'),
-        meta: {role: ['admin'], auth: true, name: '菜单管理'}
+        meta: {role: ['admin'], auth: true, title: '菜单管理'}
       }
     ]
   }
@@ -76,7 +73,7 @@ export const asyncRouterMap = [
 
 // 处理登录
 router.beforeEach((to, from, next) => {
-  console.log(to, from)
+  NProgress.start()
   // 没有角色并且去的不是登录页 我们拉取角色 如果拉取不到角色 说明没有登录
   if (!store.state.sys.role && to.path !== '/login') {
     api.GET_USER_INFO().then(res => {
@@ -104,5 +101,8 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+router.afterEach(() => {
+  NProgress.done() // finish progress bar
 })
 export default router

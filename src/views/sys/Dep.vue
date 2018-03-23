@@ -72,6 +72,11 @@ export default {
           name: 'js-cookie',
           address: 'https://github.com/js-cookie/js-cookie',
           remark: 'A simple, lightweight JavaScript API for handling browser cookies'
+        },
+        {
+          name: 'vue-count-to',
+          address: 'https://www.npmjs.com/package/vue-count-to',
+          remark: 'vue-countTo is a dependency-free, lightweight vue component that can be overwrited easingFn by yourself. You can set startVal and endVal ,it will automatic judge count up or count down. It is support vue-ssr. It is learn from countUp.js;'
         }
       ]
     }

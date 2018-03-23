@@ -6,9 +6,9 @@
           <div slot="title">
             <i class="el-icon iconfont" :class="sub.meta.icon"></i>
             <!-- <v-icon name="icon-qrcode_fill" class="el-icon-v"></v-icon> -->
-            <span slot="title">{{sub.meta.name}}</span>
+            <span slot="title">{{sub.meta.title}}</span>
           </div>
-          <el-menu-item v-if="menu" :index="item.path" v-for="item in sub.children" :key="item.path">{{item.meta.name}}</el-menu-item>
+          <el-menu-item v-if="menu" :index="item.path" v-for="item in sub.children" :key="item.path">{{item.meta.title}}</el-menu-item>
         </el-submenu>
       </el-menu>
     </el-aside>

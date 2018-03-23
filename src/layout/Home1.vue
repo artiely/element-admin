@@ -1,42 +1,20 @@
 <template>
   <el-container id="main">
     <el-header class="v-header">
-      <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
+       <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
+        <v-icon name="icon-tuichu1" class="logout" @click.native="logout"></v-icon>
     </el-header>
     <el-container class="demo-container">
       <el-aside :style="{width:isCollapse?'84px':'220px'}" class="horizontal-collapse-transition">
-        <el-menu background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-          <el-submenu index="1">
-            <div slot="title">
-              <i class="el-icon-location"></i>
-              <span slot="title">导航一</span>
-            </div>
-            <el-menu-item-group>
-              <span slot="title">分组一</span>
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="1-3">选项3</el-menu-item>
-            </el-menu-item-group>
-            <el-submenu index="1-4">
-              <span slot="title">选项4</span>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
-          </el-menu-item>
-          <el-menu-item index="3" disabled>
-            <i class="el-icon-document"></i>
-            <span slot="title">导航三</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航四</span>
-          </el-menu-item>
-        </el-menu>
+         <el-menu @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" default-active="/index" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+        <el-submenu v-for="(sub,i) in menu" :key="i" :index="i+'@'">
+          <div slot="title">
+            <i class="el-icon iconfont" :class="sub.meta.icon"></i>
+            <span slot="title">{{sub.meta.title}}</span>
+          </div>
+          <el-menu-item v-if="menu" :index="item.path" v-for="item in sub.children" :key="item.path">{{item.meta.title}}</el-menu-item>
+        </el-submenu>
+      </el-menu>
       </el-aside>
       <el-main>
         <router-view/>
@@ -45,6 +23,7 @@
   </el-container>
 </template>
 <script>
+import Cookies from 'js-cookie'
 export default {
   data() {
     return {}
@@ -52,6 +31,9 @@ export default {
   computed: {
     isCollapse() {
       return this.$store.state.sys.isCollapse
+    },
+    menu() {
+      return this.$store.state.sys.menu
     }
   },
   methods: {
@@ -63,12 +45,34 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath)
+    },
+    handleSelect(path) {
+      this.$router.push(path)
+    },
+    logout() {
+      Cookies.remove('userid')
+      window.location.reload()
     }
   },
   mounted() { }
 }
 </script>
 <style>
+.logout {
+  height: 60px;
+  width: 60px;
+  float: right;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+}
+.logout i {
+  font-size: 24px;
+}
+.el-submenu__title i {
+  font-size: 20px;
+  margin-right: 4px;
+}
 #main {
   height: 100%;
   width: 100%;
@@ -140,7 +144,7 @@ export default {
 .el-main {
   background-color: #e9eef3;
   color: #333;
-  text-align: center;
+  text-align: left;
   overflow-y: scroll;
   margin-left: -20px;
   margin-right: -20px;

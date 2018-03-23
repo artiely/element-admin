@@ -12,7 +12,7 @@
           <base-line id="_line"></base-line>
           <div class="v-footer">
             <span class="v-tip">日均销售量</span>
-            <span class="v-b"> ￥234,413,121.00 </span>
+            <count-to :start-val="0" :end-val="2017982318" :duration="4000" :decimals="0" separator=","  prefix="¥ "  suffix=" rmb" :autoplay="true"/>
           </div>
         </el-card>
       </el-col>
@@ -27,7 +27,7 @@
           <base-bar id="_bar"></base-bar>
           <div class="v-footer">
             <span class="v-tip">日均销售量</span>
-            <span class="v-b"> ￥234,413,121.00 </span>
+            <count-to :start-val="0" :end-val="2017982318" :duration="4000" :decimals="0" separator=","  prefix="¥ "  suffix=" rmb" :autoplay="true"/>
           </div>
         </el-card>
       </el-col>
@@ -42,7 +42,7 @@
           <base-pie></base-pie>
           <div class="v-footer">
             <span class="v-tip">日均销售量</span>
-            <span class="v-b"> ￥234,413,121.00 </span>
+            <count-to :start-val="0" :end-val="2017982318" :duration="4000" :decimals="0" separator=","  prefix="¥ "  suffix=" rmb" :autoplay="true"/>
           </div>
         </el-card>
       </el-col>
@@ -57,7 +57,7 @@
           <base-area></base-area>
           <div class="v-footer">
             <span class="v-tip">日均销售量</span>
-            <span class="v-b"> ￥234,413,121.00 </span>
+            <count-to :start-val="0" :end-val="2017982318" :duration="4000" :decimals="0" separator=","  prefix="¥ "  suffix=" rmb" :autoplay="true"/>
           </div>
         </el-card>
       </el-col>
@@ -143,6 +143,8 @@ import ChartDonut from './chart/Donut'
 import ChartCalendar from './chart/Calendar'
 import ChartSticks from './chart/Sticks'
 import ChartBubble from './chart/Bubble'
+
+import countTo from 'vue-count-to'
 export default {
   components: {
     ChartLine,
@@ -154,7 +156,8 @@ export default {
     BaseLine,
     BasePie,
     BaseArea,
-    BaseBar
+    BaseBar,
+    countTo
   },
   data() {
     return {

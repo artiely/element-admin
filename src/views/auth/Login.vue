@@ -73,7 +73,7 @@ export default {
           }
           let role = login.role
           // 避免用户在地址栏输入登录地址改变角色
-          if(this.$store.state.sys.role && this.$store.state.sys.role!==role){
+          if (this.$store.state.sys.role && this.$store.state.sys.role !== role) {
             window.location.reload()
           }
           this.$store.commit('FILTER_ROLE', role)
