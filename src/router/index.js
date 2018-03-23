@@ -12,17 +12,6 @@ let constantRouterMap = [
     path: '/login',
     name: 'Login',
     component: Login
-  },
-  {
-    path: '/',
-    name: 'Home',
-    component: lazyLoading('layout/Home'),
-    meta: {
-      role: ['admin'],
-      auth: true,
-      name: '顶级导航',
-      icon: 'icon-createtask'
-    }
   }
 ]
 
@@ -33,7 +22,7 @@ const router = new Router({
 export const asyncRouterMap = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Top',
     component: lazyLoading('layout/Home'),
     redirect: '/index',
     meta: {
@@ -65,7 +54,7 @@ export const asyncRouterMap = [
   },
   {
     path: '/',
-    name: 'Home',
+    name: 'Sys',
     component: lazyLoading('layout/Home'),
     meta: {
       role: ['admin'],
@@ -88,6 +77,7 @@ export const asyncRouterMap = [
 // 处理登录
 router.beforeEach((to, from, next) => {
   console.log(to, from)
+  // 没有角色并且去的不是登录页 我们拉取角色 如果拉取不到角色 说明没有登录
   if (!store.state.sys.role && to.path !== '/login') {
     console.log('---routereach')
     api.GET_USER_INFO().then(res => {

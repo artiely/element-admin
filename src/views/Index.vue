@@ -192,7 +192,7 @@ export default {
 </script>
 <style scoped lang="stylus">
 .index {
-  .el-card.no-shadow {
+  .el-card{
     box-shadow: none;
     border: none;
     border-radius: 0;

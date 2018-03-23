@@ -4,6 +4,13 @@
       <el-card>
         <div class="markdown">
           <h1>IconFont 图标 <span style="font-size: 16px">点击图标复制代码到粘贴板</span></h1>
+          <div>
+            <el-switch
+  v-model="isLabel"
+  active-text="复制标签"
+  inactive-text="复制类名">
+</el-switch>
+          </div>
           <div class="icon_lists">
             <div>
               <h3>多色图标</h3>
@@ -32,7 +39,6 @@
   </el-row>
 </template>
 <script>
-import '@/assets/iconfont/iconfont.css'
 import Clipboard from 'clipboard'
 import iconfont from '@/assets/iconfont/icon.js'
 import symbol from '@/assets/iconfont/symbol-icon.js'
@@ -42,7 +48,8 @@ export default {
   data() {
     return {
       iconfont: iconfont,
-      symbol: symbol
+      symbol: symbol,
+      isLabel: true
     }
   },
   watch: {},
@@ -50,11 +57,16 @@ export default {
   methods: {
     clip(type, symbol) {
       let icon
-      if (symbol) {
-        icon = `<v-icon name="${type.name}" symbol></v-icon>`
+      if (this.isLabel) {
+        if (symbol) {
+          icon = `<v-icon name="${type.name}" symbol></v-icon>`
+        } else {
+          icon = `<v-icon name="${type.name}" ></v-icon>`
+        }
       } else {
-        icon = `<v-icon name="${type.name}" ></v-icon>`
+        icon = type.name
       }
+
       console.log(icon)
       const clipboard = new Clipboard('.icon', {
         text() {
@@ -76,7 +88,6 @@ export default {
 }
 </script>
 <style>
-@import '../assets/iconfont/demo.css';
 .icon_lists li {
   font-size: 24px;
   cursor: pointer;
