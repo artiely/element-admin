@@ -113,7 +113,7 @@
         <el-card>
           <div slot="header" class="clearfix">
             <span>股票走势</span>
-            <div class="block" style="float: right; padding: 3px 0" >
+            <div class="block" style="float: right;margin-top:-8px;" >
               <span class="demonstration">日期区间</span>
               <el-date-picker v-model="value7" type="daterange" align="right" unlink-panels range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions2">
               </el-date-picker>
@@ -192,7 +192,7 @@ export default {
 </script>
 <style scoped lang="stylus">
 .index {
-  .el-card {
+  .el-card.no-shadow {
     box-shadow: none;
     border: none;
     border-radius: 0;

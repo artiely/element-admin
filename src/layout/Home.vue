@@ -1,37 +1,15 @@
 <template>
   <el-container>
     <el-aside :style="{width:isCollapse?'64px':'200px'}" class="horizontal-collapse-transition">
-      <el-menu background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-        <el-submenu index="1">
+      <el-menu @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" default-active="/index" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+        <el-submenu v-for="(sub,i) in menu" :key="i" :index="i+'@'">
           <div slot="title">
-            <i class="el-icon-location"></i>
-            <span slot="title">导航一</span>
+            <i class="el-icon iconfont" :class="sub.meta.icon"></i>
+            <!-- <v-icon name="icon-qrcode_fill" class="el-icon-v"></v-icon> -->
+            <span slot="title">{{sub.meta.name}}</span>
           </div>
-          <el-menu-item-group>
-            <span slot="title">分组一</span>
-            <el-menu-item index="1-1">选项1</el-menu-item>
-            <el-menu-item index="1-2">选项2</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="1-3">选项3</el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <span slot="title">选项4</span>
-            <el-menu-item index="1-4-1">选项1</el-menu-item>
-          </el-submenu>
+          <el-menu-item v-if="menu" :index="item.path" v-for="item in sub.children" :key="item.path">{{item.meta.name}}</el-menu-item>
         </el-submenu>
-        <el-menu-item index="2">
-          <i class="el-icon-menu"></i>
-          <span slot="title">导航二</span>
-        </el-menu-item>
-        <el-menu-item index="3" disabled>
-          <i class="el-icon-document"></i>
-          <span slot="title">导航三</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <i class="el-icon-setting"></i>
-          <span slot="title">导航四</span>
-        </el-menu-item>
       </el-menu>
     </el-aside>
     <el-container>
@@ -40,8 +18,8 @@
       </el-header>
       <el-main>
         <router-view/>
-        <el-footer>Copyright © 2018 Artiely</el-footer>
       </el-main>
+      <el-footer>Copyright © 2018 Artiely</el-footer>
     </el-container>
   </el-container>
 </template>
@@ -53,6 +31,9 @@ export default {
   computed: {
     isCollapse() {
       return this.$store.state.sys.isCollapse
+    },
+    menu() {
+      return this.$store.state.sys.menu
     }
   },
   methods: {
@@ -62,6 +43,9 @@ export default {
     handleOpen(key, keyPath) {
       console.log(key, keyPath)
     },
+    handleSelect(path) {
+      this.$router.push(path)
+    },
     handleClose(key, keyPath) {
       console.log(key, keyPath)
     }
@@ -70,6 +54,10 @@ export default {
 }
 </script>
 <style>
+.el-submenu__title i{
+  font-size: 24px;
+  margin-right: 4px;
+}
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
@@ -121,6 +109,7 @@ export default {
   background-color: #eee;
   color: #333;
   text-align: left;
+  /* min-height: 100vh; */
 }
 .el-container {
   height: 100%;

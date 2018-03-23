@@ -21,9 +21,6 @@ export default {
 }
 </script>
 <style>
-.iconfont::before {
-  text-shadow: rgba(200, 200, 200, 0.3) 1px 0px 1px;
-}
 .icon {
   width: 1em;
   height: 1em;

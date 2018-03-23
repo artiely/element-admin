@@ -1,0 +1,60 @@
+[
+  {
+    "path": "/",
+    "name": "Home",
+    "component": "layout/Home",
+    "redirect": "index",
+    "meta": {
+      "auth": true,
+      "name": "顶级导航",
+      "icon": "icon-createtask"
+    },
+    "children": [
+      {
+        "path": "index",
+        "name": "Index",
+        "component": "views/Index",
+        "meta": {
+          "auth": true,
+          "name": "首页"
+        }
+      },
+      {
+        "path": "icon",
+        "name": "Icon",
+        "component": "components/Icon",
+        "meta": {
+          "auth": true,
+          "name": "字体图标"
+        }
+      },
+      {
+        "path": "dep",
+        "name": "Dep",
+        "component": "views/sys/Dep",
+        "meta": {
+          "auth": true,
+          "name": "项目依赖"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/",
+    "name": "Home",
+    "component": "layout/Home",
+    "meta": {
+      "auth": true,
+      "name": "系统管理",
+      "icon": "icon-createtask"
+    },
+    "children": [
+      {
+        "path": "/menu",
+        "name": "Menu",
+        "component": "views/sys/Menu",
+        "meta": {"auth": true, "name": "菜单管理"}
+      }
+    ]
+  }
+]

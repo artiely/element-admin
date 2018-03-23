@@ -1,0 +1,5 @@
+.el-card.no-shadow {
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
