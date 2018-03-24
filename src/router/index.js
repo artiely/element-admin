@@ -6,6 +6,8 @@ import store from '@/store/index'
 import lazyLoading from './lazyLoading'
 import api from '../api/api'
 import NProgress from 'nprogress'
+
+const Layout = lazyLoading('layout/Home1')
 Vue.use(Router)
 
 let constantRouterMap = [
@@ -25,7 +27,7 @@ export const asyncRouterMap = [
   {
     path: '/',
     name: 'Top',
-    component: lazyLoading('layout/Home1'),
+    component: Layout,
     redirect: '/index',
     meta: {
       role: ['admin', 'guest'],
@@ -57,7 +59,7 @@ export const asyncRouterMap = [
   {
     path: '/',
     name: 'Sys',
-    component: lazyLoading('layout/Home1'),
+    component: Layout,
     meta: {role: ['admin'], auth: true, title: '系统管理', icon: 'icon-manage'},
     redirect: '/index',
     children: [
@@ -66,6 +68,12 @@ export const asyncRouterMap = [
         name: 'Menu',
         component: lazyLoading('views/sys/Menu'),
         meta: {role: ['admin'], auth: true, title: '菜单管理'}
+      },
+      {
+        path: '/tinymce',
+        name: 'tinymce',
+        component: lazyLoading('views/editer/Tinymce'),
+        meta: {role: ['admin'], auth: true, title: '富文本编辑器'}
       }
     ]
   }

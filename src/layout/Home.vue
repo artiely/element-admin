@@ -28,7 +28,8 @@
 import Cookies from 'js-cookie'
 export default {
   data() {
-    return {}
+    return {
+    }
   },
   computed: {
     isCollapse() {

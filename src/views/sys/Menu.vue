@@ -13,6 +13,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -60,7 +61,18 @@ export default {
   methods: {
     handleNodeClick(data) {
       console.log(data)
+    },
+    mockDemo() {
+      axios.get('/api/user').then(res => {
+        console.log(res)
+      })
+      axios.post('/api/login', { username: 'admin', password: '123' }).then(res => {
+        console.log(res)
+      })
     }
+  },
+  created() {
+    this.mockDemo()
   }
 }
 </script>

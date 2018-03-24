@@ -17,8 +17,13 @@ import './assets/style/cover.stylus'
 import VueUI from './package/index'
 // import Cookies from 'js-cookie'
 import Api from './api'
+// 进度条 还有个nprogress
 import VueProgressBar from 'vue-progressbar'
-
+// mock数据
+import '@/mock'
+// 富文本编辑器
+import tinymce from 'vue-tinymce-editor'
+Vue.component('tinymce', tinymce)
 const options = {
   color: '#bffaf3',
   failedColor: '#874b4b',
