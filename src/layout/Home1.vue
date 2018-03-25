@@ -16,7 +16,7 @@
     </el-header>
     <el-container class="demo-container">
       <el-aside :style="{width:isCollapse?'84px':'220px'}" class="horizontal-collapse-transition">
-         <el-menu @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" default-active="/index" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+         <el-menu @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :default-active="active" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse" :router="true">
         <el-submenu v-for="(sub,i) in menu" :key="i" :index="i+'@'">
           <div slot="title">
             <i class="el-icon iconfont" :class="sub.meta.icon"></i>
@@ -65,6 +65,9 @@ export default {
     },
     menu() {
       return this.$store.state.sys.menu
+    },
+    active() {
+      return this.$route.path
     }
   },
   methods: {

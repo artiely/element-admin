@@ -5,14 +5,14 @@
 </div>
 </template>
 <script>
-let lang = 'zh_CN'
+let lang = window.localStorage.getItem('lang') ? window.localStorage.getItem('lang') : 'zh'
 export default {
   data() {
     return {
       data: '欢迎使用 tinymce',
       lang: 0,
       options: {
-        language_url: lang === 'zh_CN' ? require('./langs/zh_CN') : require('./langs/en_CA')
+        language_url: lang === 'zh' ? require('../../../static/langs/zh_CN') : require('../../../static/langs/en_CA')
       }
     }
   }

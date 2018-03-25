@@ -23,6 +23,9 @@ import VueProgressBar from 'vue-progressbar'
 import '@/mock'
 // 富文本编辑器
 import tinymce from 'vue-tinymce-editor'
+// 国际化
+import VueI18n from 'vue-i18n'
+Vue.use(VueI18n)
 Vue.component('tinymce', tinymce)
 const options = {
   color: '#bffaf3',
@@ -45,11 +48,32 @@ Vue.use(ElementUI, {size: 'small'})
 Vue.config.productionTip = false
 Vue.config.devtools = true
 
+const messages = {
+  en: {
+    message: {
+      hello: 'hello world'
+    }
+  },
+  zh: {
+    message: {
+      hello: '你好、世界'
+    }
+  }
+}
+
+// Create VueI18n instance with options
+const i18n = new VueI18n({
+  locale: window.localStorage.getItem('lang')
+    ? window.localStorage.getItem('lang')
+    : 'zh', // set locale
+  messages // set locale messages
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
+  i18n,
   components: {App},
   template: '<App/>'
 })

@@ -5,7 +5,7 @@ const app = express()
 const server = require('http').Server(app)
 const userRouter = require('./router/user')
 require('./db/index')
-
+app.use(express.static('../dist'))
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/api', userRouter)

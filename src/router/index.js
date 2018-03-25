@@ -64,10 +64,10 @@ export const asyncRouterMap = [
     redirect: '/index',
     children: [
       {
-        path: '/menu',
-        name: 'Menu',
-        component: lazyLoading('views/sys/Menu'),
-        meta: {role: ['admin'], auth: true, title: '菜单管理'}
+        path: '/lang',
+        name: 'Lang',
+        component: lazyLoading('views/i18n/Lang'),
+        meta: {role: ['admin'], auth: true, title: '语言国际化'}
       },
       {
         path: '/tinymce',

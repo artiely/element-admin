@@ -42,6 +42,7 @@
     "viser-vue": "^2.2.1",
     "vue": "^2.5.2",
     "vue-count-to": "^1.0.13",
+    "vue-i18n": "^7.6.0",
     "vue-progressbar": "^0.7.4",
     "vue-router": "^3.0.1",
     "vue-tinymce-editor": "^1.6.2",

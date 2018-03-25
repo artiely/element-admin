@@ -5,7 +5,8 @@ import {asyncRouterMap} from '@/router/index'
 const state = {
   isCollapse: false, // 菜单状态是否收起
   menu: null, // 菜单
-  role: null // 角色权限
+  role: null, // 角色权限
+  lang: 'zh' // 语言
 }
 
 /**
@@ -65,12 +66,12 @@ const mutations = {
   */
   [types.FILTER_ROLE](state, payload) {
     state.role = payload
-    // if (payload === 'admin') {
-    //   console.log('管理员身份', payload)
-    //   state.menu = asyncRouterMap
-    // } else {
     state.menu = filterAsyncRouter(asyncRouterMap, payload)
-    // }
+  },
+  // 设置语言
+  [types.SET_LANG](state, payload) {
+    state.lang = payload
+    window.localStorage.setItem('lang', payload)
   }
 }
 
