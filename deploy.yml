@@ -18,6 +18,6 @@ deploy :
     path : /www/ele-admin/production
     ssh_options : StrictHostKeyChecking=no
     pre-deploy : git fetch --all
-    post-deploy : 'npm install --ignore-scripts && npm run build && pm2 startOrRestart deploy.yml --env production'
+    post-deploy : 'npm install --ignore-scripts && pm2 startOrRestart deploy.yml --env production'
     env : 
       NODE_ENV : production
