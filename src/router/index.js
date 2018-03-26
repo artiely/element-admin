@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Cookies from 'js-cookie'
 import Login from '@/views/auth/Login'
+import E404 from '@/views/auth/E404'
 import store from '@/store/index'
 import lazyLoading from './lazyLoading'
 import api from '../api/api'
@@ -76,6 +77,12 @@ export const asyncRouterMap = [
         meta: {role: ['admin'], auth: true, title: '富文本编辑器'}
       }
     ]
+  },
+  {
+    path: '/*',
+    name: '404',
+    component: E404,
+    meta: {role: ['admin', 'guest'], title: '页面找不到', hidden: true}
   }
 ]
 
