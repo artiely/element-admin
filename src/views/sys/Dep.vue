@@ -77,6 +77,16 @@ export default {
           name: 'vue-count-to',
           address: 'https://www.npmjs.com/package/vue-count-to',
           remark: 'vue-countTo is a dependency-free, lightweight vue component that can be overwrited easingFn by yourself. You can set startVal and endVal ,it will automatic judge count up or count down. It is support vue-ssr. It is learn from countUp.js;'
+        },
+        {
+          name: 'vue-quill-editor',
+          address: 'https://github.com/surmon-china/vue-quill-editor',
+          remark: '@quilljs editor component for @vuejs'
+        },
+        {
+          name: 'mavonEditor',
+          address: 'https://github.com/hinesboy/mavonEditor',
+          remark: 'mavonEditor - A markdown editor based on Vue that supports a variety of personalized features'
         }
       ]
     }

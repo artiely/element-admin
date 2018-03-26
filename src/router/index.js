@@ -72,9 +72,15 @@ export const asyncRouterMap = [
       },
       {
         path: '/editor',
-        name: 'editor',
+        name: 'Editor',
         component: lazyLoading('views/editor/Editor'),
         meta: {role: ['admin'], auth: true, title: '富文本编辑器'}
+      },
+      {
+        path: '/markdown',
+        name: 'Markdown',
+        component: lazyLoading('views/editor/Markdown'),
+        meta: {role: ['admin'], auth: true, title: 'Markdown编辑器'}
       }
     ]
   },
