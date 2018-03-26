@@ -1,7 +1,7 @@
 <template>
 <div>
-  <tinymce id="d1" v-model="data" :other_options="options"></tinymce>
-  <pre>{{data}}</pre>
+  <tinymce id="terms" v-model="h" :content='content' :options='options' @change="changed"></tinymce>
+    <p v-html="h"></p>
 </div>
 </template>
 <script>
@@ -12,7 +12,9 @@ export default {
       data: '欢迎使用 tinymce',
       lang: 0,
       options: {
-        language_url: lang === 'zh' ? require('../../../static/langs/zh_CN') : require('../../../static/langs/en_CA')
+        language_url: lang === 'zh' ? require('../../../static/langs/zh_CN') : require('../../../static/langs/en_CA'),
+        content: '<h1>Default content</h1>',
+        options: {}
       }
     }
   }

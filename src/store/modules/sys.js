@@ -27,7 +27,6 @@ function hasPermission(role, route) {
  * @param role
  */
 function filterAsyncRouter(asyncRouterMap, role) {
-  console.log('过滤之前的路由', asyncRouterMap)
   const accessedRouters = asyncRouterMap.filter(route => {
     if (hasPermission(role, route)) {
       if (route.children && route.children.length) {
@@ -37,7 +36,6 @@ function filterAsyncRouter(asyncRouterMap, role) {
     }
     return false
   })
-  console.log('过滤之后的路由', accessedRouters)
   return accessedRouters
 }
 

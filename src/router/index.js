@@ -70,9 +70,9 @@ export const asyncRouterMap = [
         meta: {role: ['admin'], auth: true, title: '语言国际化'}
       },
       {
-        path: '/tinymce',
-        name: 'tinymce',
-        component: lazyLoading('views/editer/Tinymce'),
+        path: '/editor',
+        name: 'editor',
+        component: lazyLoading('views/editor/Editor'),
         meta: {role: ['admin'], auth: true, title: '富文本编辑器'}
       }
     ]
@@ -87,7 +87,6 @@ router.beforeEach((to, from, next) => {
     api.GET_USER_INFO().then(res => {
       if (res.code === 0) {
         store.commit('FILTER_ROLE', res.role)
-        // constantRouterMap.push(...store.state.sys.menu)
         router.addRoutes(store.state.sys.menu)
         next(...to)
       } else {

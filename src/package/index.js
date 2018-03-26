@@ -1,9 +1,11 @@
 // 1.引入组件
 import VIcon from './icon'
+// import Tinymce from './tinymce'
 
 // 2.挂载组件对象
 const components = {
   VIcon
+  // Tinymce
 }
 
 // 3.注册组件

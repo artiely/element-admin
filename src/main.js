@@ -11,6 +11,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
 // iconfont 字体样式
 import '@/assets/iconfont/iconfont.css'
+import '@/assets/iconfont/iconfont.js'
 import '@/assets/iconfont/demo.css'
 // 自定义覆盖框架样式
 import './assets/style/cover.stylus'
@@ -25,6 +26,16 @@ import '@/mock'
 import tinymce from 'vue-tinymce-editor'
 // 国际化
 import VueI18n from 'vue-i18n'
+// 富文本
+import VueQuillEditor from 'vue-quill-editor'
+// 国际化
+import messages from '@/i18n/index'
+
+// require styles
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+Vue.use(VueQuillEditor /* { default global options } */)
 Vue.use(VueI18n)
 Vue.component('tinymce', tinymce)
 const options = {
@@ -47,19 +58,6 @@ Vue.use(VueUI)
 Vue.use(ElementUI, {size: 'small'})
 Vue.config.productionTip = false
 Vue.config.devtools = true
-
-const messages = {
-  en: {
-    message: {
-      hello: 'hello world'
-    }
-  },
-  zh: {
-    message: {
-      hello: '你好、世界'
-    }
-  }
-}
 
 // Create VueI18n instance with options
 const i18n = new VueI18n({

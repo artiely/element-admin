@@ -1,5 +1,6 @@
 'use strict'
 const path = require('path')
+var webpack = require('webpack')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
@@ -94,4 +95,13 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty',
   },
+  plugins: [
+    // ...
+
+    // Jquery loader plugin.
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    }),
+  ],
 }
