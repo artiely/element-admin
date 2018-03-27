@@ -23,7 +23,8 @@ import VueProgressBar from 'vue-progressbar'
 // mock数据
 import '@/mock'
 // 富文本编辑器
-import tinymce from 'vue-tinymce-editor'
+// import tinymce from 'vue-tinymce-editor'
+// Vue.component('tinymce', tinymce)
 // 国际化
 import VueI18n from 'vue-i18n'
 // 富文本
@@ -42,7 +43,7 @@ import 'mavon-editor/dist/css/index.css'
 Vue.use(mavonEditor)
 Vue.use(VueQuillEditor /* { default global options } */)
 Vue.use(VueI18n)
-Vue.component('tinymce', tinymce)
+
 const options = {
   color: '#bffaf3',
   failedColor: '#874b4b',
