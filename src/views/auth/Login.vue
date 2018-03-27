@@ -1,6 +1,6 @@
 <template>
   <div class="v-bg">
-    <el-dialog title="登录"  :visible="centerDialogVisible" width="30%" center :show-close="false">
+    <el-dialog title="登录"  :visible="centerDialogVisible" width="30%" center :show-close="false" :modal="false">
       <el-form label-width="0px" label-position="left" v-loading="loading" :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  class="demo-ruleForm">
         <el-form-item  prop="username">
           <el-input type="text" v-model="ruleForm.username" auto-complete="off">
