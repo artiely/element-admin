@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
     <!-- set progressbar -->
     <vue-progress-bar></vue-progress-bar>
   </div>
