@@ -4,7 +4,7 @@
 
 
 # demo 
-poorguy.me:9111 (可能不稳定)
+ [http://admin.08tj.com](http://admin.08tj.com) (可能不稳定)
 
 ## Build Setup
 
