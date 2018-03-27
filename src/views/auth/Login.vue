@@ -1,17 +1,27 @@
 <template>
   <div class="v-bg">
     <el-dialog title="登录"  :visible="centerDialogVisible" width="30%" center :show-close="false">
-      <el-form v-loading="loading" :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-        <el-form-item label="用户名" prop="username">
-          <el-input type="text" v-model="ruleForm.username" auto-complete="off"></el-input>
+      <el-form label-width="0px" label-position="left" v-loading="loading" :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  class="demo-ruleForm">
+        <el-form-item  prop="username">
+          <el-input type="text" v-model="ruleForm.username" auto-complete="off">
+            <v-icon slot="prefix" name="icon-people" ></v-icon>
+          </el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="ruleForm.password" auto-complete="off"></el-input>
+        <el-form-item prop="password">
+          <el-input type="password" v-model="ruleForm.password" auto-complete="off">
+            <v-icon slot="prefix"  name="icon-unlock" ></v-icon>
+          </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-          <el-button @click="resetForm('ruleForm')">重置</el-button>
+          <el-button style="width:100%" type="primary" @click="submitForm('ruleForm')">登录</el-button>
+          <el-button type="text" @click="resetForm('ruleForm')">重置</el-button>
+          <el-button type="text" style="float:right" @click="register('ruleForm')">注册</el-button>
         </el-form-item>
+        <el-alert
+        title="用户名: guest 密码:123 / 用户名:admin 密码:123"
+        :closable="false"
+        type="success">
+      </el-alert>
       </el-form>
     </el-dialog>
   </div>
@@ -37,8 +47,8 @@ export default {
       loading: false,
       centerDialogVisible: true,
       ruleForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123'
       },
       rules: {
         username: [{
@@ -102,12 +112,15 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields()
     },
-    beforeRouteLeave (to, from, next) {
+    register() {
+      alert('开发中。。。')
+    },
+    beforeRouteLeave(to, from, next) {
     // 导航离开该组件的对应路由时调用
     // 可以访问组件实例 `this`
-    console.log('关闭loading')
-    this.loading = false
-  }
+      console.log('关闭loading')
+      this.loading = false
+    }
   }
 }
 </script>

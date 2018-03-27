@@ -1,10 +1,14 @@
 # ele-admin
 
-> A Vue.js project
+> vue-admin
 
 
 # demo 
  [http://admin.08tj.com](http://admin.08tj.com) (可能不稳定)
+
+# feature
+1. 简单的菜单权限控制
+2. 常用优秀vue生态集成
 
 ## Build Setup
 
