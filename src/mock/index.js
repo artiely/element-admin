@@ -124,16 +124,16 @@ Mock.mock('/api/user', 'delete', function(options) {
   return {code: 0, data: data}
 // 返回这个数组,也就是返回处理后的假数据
 })
-
+// 新增
 Mock.mock('/api/user', 'post', function(options) {
   console.log(options)
   let query = JSON.parse(options.body)
   query.id = user[user.length - 1].id++
   user.unshift(query)
   return {code: 0, data: user}
-  // 返回这个数组,也就是返回处理后的假数据
 })
 
+// 修改
 Mock.mock('/api/user', 'put', function(options) {
   console.log(options)
   let query = JSON.parse(options.body)
@@ -146,9 +146,9 @@ Mock.mock('/api/user', 'put', function(options) {
       item.city = query.city
       item.isMale = query.isMale
     }
+    return item
   })
   return {code: 0, data: data}
-  // 返回这个数组,也就是返回处理后的假数据
 })
 
 /* Mock.mock('/api/login', function(options) {

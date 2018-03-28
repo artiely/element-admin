@@ -47,7 +47,7 @@ const ADD_USER = params => {
 /**
  * 修改用户
  */
-const PUT_USER = params => {
+const EDIT_USER = params => {
   return fetch({url: `/api/user`, method: 'put', data: params})
 }
 
@@ -58,7 +58,7 @@ const apiList = {
   GET_USER_LIST,
   DELETE_USER_LIST,
   ADD_USER,
-  PUT_USER
+  EDIT_USER
 }
 
 export default apiList

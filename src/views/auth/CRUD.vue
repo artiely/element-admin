@@ -65,6 +65,7 @@
         <el-button type="primary" @click="postUser">确 定</el-button>
       </div>
     </el-dialog>
+    <pre>{{form}}</pre>
   </div>
 </template>
 
@@ -117,12 +118,17 @@ export default {
       this.dialogFormVisible = true
     },
     async postUser() {
-      console.log('确定了')
       this.loading = true
-      let res = await this.$api.PUT_USER(this.form)
-      this.dialogFormVisible = false
+      if (this.title === '新增') {
+        let res = await this.$api.ADD_USER(this.form)
+        this.dialogFormVisible = false
+        this.data = res.data
+      } else {
+        let res = await this.$api.EDIT_USER(this.form)
+        this.dialogFormVisible = false
+        this.data = res.data
+      }
       this.loading = false
-      this.data = res.data
     },
     handleEdit(row) {
       this.title = '编辑'
