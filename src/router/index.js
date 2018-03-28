@@ -61,7 +61,7 @@ export const asyncRouterMap = [
     path: '/',
     name: 'Sys',
     component: Layout,
-    meta: {role: ['admin'], auth: true, title: '系统管理', icon: 'icon-manage'},
+    meta: {role: ['admin', 'guest'], auth: true, title: '系统管理', icon: 'icon-manage'},
     redirect: '/index',
     children: [
       {
@@ -81,6 +81,12 @@ export const asyncRouterMap = [
         name: 'Markdown',
         component: lazyLoading('views/editor/Markdown'),
         meta: {role: ['admin'], auth: true, title: 'Markdown编辑器'}
+      },
+      {
+        path: '/crud',
+        name: 'CRUD',
+        component: lazyLoading('views/auth/CRUD'),
+        meta: {role: ['admin', 'guest'], auth: true, title: '增删改查'}
       }
     ]
   },
