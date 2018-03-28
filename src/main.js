@@ -19,7 +19,7 @@ import VueUI from './package/index'
 // import Cookies from 'js-cookie'
 import Api from './api'
 // 进度条 还有个nprogress
-import VueProgressBar from 'vue-progressbar'
+// import VueProgressBar from 'vue-progressbar'
 // mock数据
 import '@/mock'
 // 富文本编辑器
@@ -44,21 +44,6 @@ Vue.use(mavonEditor)
 Vue.use(VueQuillEditor /* { default global options } */)
 Vue.use(VueI18n)
 
-const options = {
-  color: '#bffaf3',
-  failedColor: '#874b4b',
-  thickness: '2px',
-  transition: {
-    speed: '0.2s',
-    opacity: '0.6s',
-    termination: 300
-  },
-  autoRevert: true,
-  location: 'bottom',
-  inverse: false
-}
-
-Vue.use(VueProgressBar, options)
 Vue.use(Api)
 Vue.use(VueUI)
 Vue.use(ElementUI, {size: 'small'})

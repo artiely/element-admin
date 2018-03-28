@@ -1,6 +1,8 @@
 <template>
   <div id="main">
+    <el-card>
     <mavon-editor ref="md" v-model="value" :ishljs="true" @imgAdd="$imgAdd" @imgDel="$imgDel" />
+    </el-card>
   </div>
 </template>
 <script>

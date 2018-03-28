@@ -1,4 +1,5 @@
 <template>
+<el-card>
   <el-table :data="tableData" stripe style="width: 100%">
     <el-table-column prop="name" label="姓名" >
     </el-table-column>
@@ -7,6 +8,7 @@
     <el-table-column prop="remark" label="备注" >
     </el-table-column>
   </el-table>
+</el-card>
 </template>
 <script>
 export default {
