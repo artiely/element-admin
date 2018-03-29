@@ -23,8 +23,8 @@
       </el-header>
       <el-main>
         <router-view/>
+        <!-- <el-footer>Copyright © 2018 Artiely</el-footer> -->
       </el-main>
-      <el-footer>Copyright © 2018 Artiely</el-footer>
     </el-container>
   </el-container>
 </template>
@@ -81,7 +81,7 @@ export default {
   mounted() { }
 }
 </script>
-<style>
+<style scoped lang="stylus">
 .logout{
   height: 60px;
   width: 60px;
@@ -89,9 +89,6 @@ export default {
   text-align: center;
   line-height: 60px;
   cursor: pointer;
-}
-.logout i{
-  font-size: 24px;
 }
 .el-submenu__title i{
   font-size: 24px;
@@ -108,19 +105,7 @@ export default {
   border-right: none;
   min-height: 100vh;
 }
-.menu {
-  height: 60px;
-  width: 60px;
-  text-align: center;
-  cursor: pointer;
-  float: left;
-}
-.menu .iconfont {
-  font-size: 24px;
-  display: inline-block;
-  line-height: 60px;
-  height: 60px;
-}
+
 .el-menu--collapse {
   max-width: 64px;
   min-width: 64px;

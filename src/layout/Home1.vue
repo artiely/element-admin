@@ -79,7 +79,7 @@ export default {
   mounted() { }
 }
 </script>
-<style>
+<style scoped lang="stylus">
 .v-head-select{
   margin-top: 15px;
   float: left;
@@ -95,9 +95,6 @@ export default {
   text-align: center;
   line-height: 60px;
   cursor: pointer;
-}
-.logout i {
-  font-size: 24px;
 }
 .el-submenu__title i {
   font-size: 20px;
@@ -122,13 +119,7 @@ export default {
   border-right: none;
   min-height: 100vh;
 }
-.menu {
-  height: 60px;
-  width: 60px;
-  text-align: center;
-  cursor: pointer;
-  float: left;
-}
+
 .demo-container {
   padding-top: 60px;
   position: absolute;
@@ -136,12 +127,6 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-}
-.menu .iconfont {
-  font-size: 24px;
-  display: inline-block;
-  line-height: 60px;
-  height: 60px;
 }
 .el-menu--collapse {
   max-width: 64px;

@@ -1,0 +1,16 @@
+.menu {
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  cursor: pointer;
+  float: left;
+  .iconfont {
+    font-size: 24px;
+    display: inline-block;
+    line-height: 60px;
+    height: 60px;
+  }
+}
+.logout i {
+  font-size: 24px;
+}

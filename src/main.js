@@ -15,6 +15,7 @@ import '@/assets/iconfont/iconfont.js'
 import '@/assets/iconfont/demo.css'
 // 自定义覆盖框架样式
 import './assets/style/cover.stylus'
+import './assets/style/main.stylus'
 import VueUI from './package/index'
 // import Cookies from 'js-cookie'
 import Api from './api'
