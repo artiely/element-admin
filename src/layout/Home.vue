@@ -15,11 +15,14 @@
     <el-container>
       <el-header>
         <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
-        <v-icon name="icon-tuichu1" class="logout" @click.native="logout"></v-icon>
-         <select name="" id="" v-model="layout">
-          <option value="固定布局">固定布局</option>
-          <option value="基础布局">基础布局</option>
-        </select>
+          <div class="logout">
+            <el-tooltip class="item" effect="dark" content="布局" placement="top-end">
+            <v-icon name="icon-workbench" @click.native="handleLayout" ></v-icon>
+             </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="退出" placement="top-end">
+        <v-icon name="icon-tuichu1"  @click.native="logout"></v-icon>
+        </el-tooltip>
+          </div>
       </el-header>
       <el-main>
         <router-view/>
@@ -47,20 +50,14 @@ export default {
       return this.$route.path
     }
   },
-  watch: {
-    'layout': {
-      handler(val) {
-        this.$store.commit('LAYOUT', val)
-        this.$notify.info({
-          title: '消息',
-          message: '登出重新登录改变局部'
-        })
-      }
-    }
-  },
   methods: {
     handlerIsCollapse() {
       this.$store.commit('IS_COLLAPSE')
+    },
+    handleLayout() {
+      let _l = this.layout === '固定布局' ? '基础布局' : '固定布局'
+      this.$store.commit('LAYOUT', _l)
+      window.location.reload()
     },
     handleOpen(key, keyPath) {
       console.log(key, keyPath)
@@ -78,7 +75,16 @@ export default {
       // this.$router.replace('/login')
     }
   },
-  mounted() { }
+  mounted() {
+    if (this.$store.state.sys.role === 'guest') {
+      this.$notify.info({
+        title: '消息',
+        message: '游客没有权限查看所有菜单',
+        offset: 60,
+        duration: 0
+      })
+    }
+  }
 }
 </script>
 <style scoped lang="stylus">
@@ -123,7 +129,7 @@ export default {
   font-size: 16px;
 }
 .el-aside {
-  box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.1);
   background-color: rgb(84, 92, 100);
   color: #333;
   text-align: left;
@@ -134,7 +140,6 @@ export default {
   background-color: #eee;
   color: #333;
   text-align: left;
-  /* min-height: 100vh; */
 }
 .el-container {
   height: 100%;

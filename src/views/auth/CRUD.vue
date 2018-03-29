@@ -65,7 +65,6 @@
         <el-button type="primary" @click="postUser">确 定</el-button>
       </div>
     </el-dialog>
-    <pre>{{form}}</pre>
   </div>
 </template>
 

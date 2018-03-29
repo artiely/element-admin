@@ -2,11 +2,14 @@
   <el-container id="main">
     <el-header class="v-header">
        <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
-        <v-icon name="icon-tuichu1" class="logout" @click.native="logout"></v-icon>
-        <select name="" id="" v-model="layout">
-          <option value="固定布局">固定布局</option>
-          <option value="基础布局">基础布局</option>
-        </select>
+          <div class="logout">
+            <el-tooltip class="item" effect="dark" content="布局" placement="top-end">
+            <v-icon name="icon-workbench" @click.native="handleLayout" ></v-icon>
+             </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="退出" placement="top-end">
+          <v-icon name="icon-tuichu1"  @click.native="logout"></v-icon>
+       </el-tooltip>
+          </div>
     </el-header>
     <el-container class="demo-container">
       <el-aside :style="{width:isCollapse?'84px':'220px'}" class="horizontal-collapse-transition">
@@ -47,20 +50,14 @@ export default {
       return this.$route.path
     }
   },
-  watch: {
-    'layout': {
-      handler(val) {
-        this.$store.commit('LAYOUT', val)
-        this.$notify.info({
-          title: '消息',
-          message: '重新登录改变局部'
-        })
-      }
-    }
-  },
   methods: {
     handlerIsCollapse() {
       this.$store.commit('IS_COLLAPSE')
+    },
+    handleLayout() {
+      let _l = this.layout === '固定布局' ? '基础布局' : '固定布局'
+      this.$store.commit('LAYOUT', _l)
+      window.location.reload()
     },
     handleOpen(key, keyPath) {
       console.log(key, keyPath)
@@ -76,7 +73,16 @@ export default {
       window.location.reload()
     }
   },
-  mounted() { }
+  mounted() {
+    if (this.$store.state.sys.role === 'guest') {
+      this.$notify.info({
+        title: '消息',
+        message: '游客没有权限查看所有菜单',
+        offset: 60,
+        duration: 0
+      })
+    }
+  }
 }
 </script>
 <style scoped lang="stylus">
@@ -113,7 +119,7 @@ export default {
   flex: 0 0 200px;
 }
 .v-header {
-  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.1);
 }
 .el-menu.el-menu-vertical-demo {
   border-right: none;
