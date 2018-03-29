@@ -3,6 +3,10 @@
     <el-header class="v-header">
        <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
         <v-icon name="icon-tuichu1" class="logout" @click.native="logout"></v-icon>
+        <select name="" id="" v-model="layout">
+          <option value="固定布局">固定布局</option>
+          <option value="基础布局">基础布局</option>
+        </select>
     </el-header>
     <el-container class="demo-container">
       <el-aside :style="{width:isCollapse?'84px':'220px'}" class="horizontal-collapse-transition">
@@ -29,6 +33,7 @@ import Cookies from 'js-cookie'
 export default {
   data() {
     return {
+      layout: Cookies.get('layout') ? Cookies.get('layout') : '固定布局'
     }
   },
   computed: {
@@ -40,6 +45,17 @@ export default {
     },
     active() {
       return this.$route.path
+    }
+  },
+  watch: {
+    'layout': {
+      handler(val) {
+        this.$store.commit('LAYOUT', val)
+        this.$notify.info({
+          title: '消息',
+          message: '重新登录改变局部'
+        })
+      }
     }
   },
   methods: {

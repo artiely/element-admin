@@ -7,8 +7,12 @@ import store from '@/store/index'
 import lazyLoading from './lazyLoading'
 import api from '../api/api'
 import NProgress from 'nprogress'
-
-const Layout = lazyLoading('layout/Home1')
+let _layout = Cookies.get('layout') ? Cookies.get('layout') : '固定布局'
+console.log(_layout)
+const Layout =
+  _layout === '固定布局'
+    ? lazyLoading('layout/Home1')
+    : lazyLoading('layout/Home')
 Vue.use(Router)
 
 let constantRouterMap = [

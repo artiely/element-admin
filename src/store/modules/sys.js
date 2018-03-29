@@ -1,8 +1,10 @@
 import * as types from '../mutation-types'
 import {asyncRouterMap} from '@/router/index'
+import Cookies from 'js-cookie'
 
 // initial state
 const state = {
+  layout: '固定布局',
   isCollapse: false, // 菜单状态是否收起
   menu: null, // 菜单
   role: null, // 角色权限
@@ -49,6 +51,13 @@ const mutations = {
   */
   [types.IS_COLLAPSE](state, payload) {
     state.isCollapse = !state.isCollapse
+  },
+  /*
+  布局
+  */
+  [types.LAYOUT](state, payload) {
+    state.layout = payload
+    Cookies.set('layout', payload)
   },
   /*
   当前菜单(主要是注销时清空)
