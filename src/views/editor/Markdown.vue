@@ -7,8 +7,16 @@
 </template>
 <script>
 import axios from 'axios'
+// markdown
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+// use
+// Vue.use(mavonEditor)
 export default {
   name: 'amrkdown',
+  components: {
+    mavonEditor
+  },
   methods: {
     // 绑定@imgAdd event
     $imgAdd(pos, $file) {

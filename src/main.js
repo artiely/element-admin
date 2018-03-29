@@ -37,11 +37,7 @@ import messages from '@/i18n/index'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
-// markdown
-import mavonEditor from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
-// use
-Vue.use(mavonEditor)
+
 Vue.use(VueQuillEditor /* { default global options } */)
 Vue.use(VueI18n)
 
