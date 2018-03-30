@@ -109,7 +109,7 @@
       </el-col>
     </el-row>
     <el-row>
-      <el-col :xs="24" :sm="24" :md="22" :lg="24" :xl="24">
+      <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-card>
           <div slot="header" class="clearfix">
             <span>股票走势</span>
