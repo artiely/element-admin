@@ -39,7 +39,8 @@ module.exports = {
     vuex: 'Vuex',
     axios: 'axios',
     'element-ui': 'ELEMENT',
-    '@antv/g2': 'G2'
+    '@antv/g2': 'G2',
+    'mavon-editor': 'mavonEditor',
     // 'vue-i18n': 'vue-i18n',
   },
   resolve: {
