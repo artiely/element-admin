@@ -14,3 +14,6 @@
 .logout i {
   font-size: 24px;
 }
+.v-bg .el-dialog.el-dialog--center{
+  width:300px!important;
+}
