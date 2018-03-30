@@ -1,10 +1,16 @@
+
+![](https://img.shields.io/npm/v/npm.svg)
+![](https://img.shields.io/apm/l/vim-mode.svg)
+![](https://img.shields.io/node/v/@stdlib/stdlib.svg)
+![](https://img.shields.io/badge/style-flat-green.svg?longCache=true&style=flat)
+
 # ele-admin
 
 > vue-admin
 
 
 # demo 
- [http://admin.08tj.com](http://admin.08tj.com) (可能不稳定)
+ [http://admin.08tj.com](http://admin.08tj.com) (服务器配置低)
 
 # feature
 1. 简单的菜单权限控制
