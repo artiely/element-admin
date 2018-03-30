@@ -3,6 +3,7 @@
 ![](https://img.shields.io/apm/l/vim-mode.svg)
 ![](https://img.shields.io/node/v/@stdlib/stdlib.svg)
 ![](https://img.shields.io/badge/style-flat-green.svg?longCache=true&style=flat)
+![](https://img.shields.io/badge/code_style-standard-brightgreen.svg)
 
 # ele-admin
 
