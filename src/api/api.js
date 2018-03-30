@@ -6,7 +6,6 @@ import fetch from './fetch'
  * @param {String} password
  */
 const LOGIN = params => {
-  console.log('我执行了')
   return fetch({url: '/api/login', method: 'post', data: params})
 }
 
