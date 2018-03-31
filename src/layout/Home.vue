@@ -16,12 +16,15 @@
       <el-header>
         <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
           <div class="logout">
+            <el-tooltip class="item" effect="dark" :content="screenfull? '还原': '全屏'" placement="top-end">
+              <v-icon name="icon-send" @click.native="toggleScreen"></v-icon>
+            </el-tooltip>
             <el-tooltip class="item" effect="dark" content="布局" placement="top-end">
-            <v-icon name="icon-workbench" @click.native="handleLayout" ></v-icon>
-             </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="退出" placement="top-end">
-        <v-icon name="icon-tuichu1"  @click.native="logout"></v-icon>
-        </el-tooltip>
+              <v-icon name="icon-workbench" @click.native="handleLayout" ></v-icon>
+            </el-tooltip>
+            <el-tooltip class="item" effect="dark" content="退出" placement="top-end">
+              <v-icon name="icon-tuichu1"  @click.native="logout"></v-icon>
+            </el-tooltip>
           </div>
       </el-header>
       <el-main>
@@ -36,6 +39,7 @@ import Cookies from 'js-cookie'
 export default {
   data() {
     return {
+      screenfull: false,
       layout: Cookies.get('layout') ? Cookies.get('layout') : '固定布局'
     }
   },
@@ -51,6 +55,42 @@ export default {
     }
   },
   methods: {
+    toggleScreen() {
+      if (!this.screenfull) {
+        var docElm = document.documentElement
+        if (docElm.requestFullscreen) {
+          docElm.requestFullscreen()
+        } else if (docElm.mozRequestFullScreen) {
+          docElm.mozRequestFullScreen()
+        } else if (docElm.webkitRequestFullScreen) {
+          docElm.webkitRequestFullScreen()
+        } else if (docElm.msRequestFullscreen) {
+          docElm.msRequestFullscreen()
+        } else {
+          this.$message({
+            type: 'warning',
+            message: '除了让你升级浏览器对方没什么好说的！'
+          })
+        }
+        this.screenfull = true
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen()
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen()
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen()
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen()
+        } else {
+          this.$message({
+            type: 'warning',
+            message: '请升级浏览器，不然我是不会理你的！'
+          })
+        }
+        this.screenfull = false
+      }
+    },
     handlerIsCollapse() {
       this.$store.commit('IS_COLLAPSE')
     },
@@ -88,18 +128,19 @@ export default {
 }
 </script>
 <style scoped lang="stylus">
-.logout{
+.logout {
   height: 60px;
-  width: 60px;
   float: right;
   text-align: center;
   line-height: 60px;
   cursor: pointer;
 }
-.el-submenu__title i{
+
+.el-submenu__title i {
   font-size: 24px;
   margin-right: 4px;
 }
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
@@ -107,6 +148,7 @@ export default {
   min-width: 200px;
   flex: 0 0 200px;
 }
+
 .el-menu.el-menu-vertical-demo {
   border-right: none;
   min-height: 100vh;
@@ -117,17 +159,20 @@ export default {
   min-width: 64px;
   flex: 0 0 64px;
 }
-.el-header{
+
+.el-header {
   background-color: #fff;
   color: #333;
 }
-.el-footer{
+
+.el-footer {
   line-height: 60px;
   text-align: center;
   color: #666;
   background: #ddd;
   font-size: 16px;
 }
+
 .el-aside {
   box-shadow: 3px 0px 6px 0px rgba(0, 0, 0, 0.1);
   background-color: rgb(84, 92, 100);
@@ -136,11 +181,13 @@ export default {
   position: relative;
   z-index: 99;
 }
+
 .el-main {
   background-color: #eee;
   color: #333;
   text-align: left;
 }
+
 .el-container {
   height: 100%;
   min-height: 100vh;

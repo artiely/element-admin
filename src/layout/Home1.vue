@@ -3,12 +3,15 @@
     <el-header class="v-header">
        <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
           <div class="logout">
+            <el-tooltip class="item" effect="dark" :content="screenfull? '还原': '全屏'" placement="top-end">
+              <v-icon name="icon-send" @click.native="toggleScreen"></v-icon>
+            </el-tooltip>
             <el-tooltip class="item" effect="dark" content="布局" placement="top-end">
-            <v-icon name="icon-workbench" @click.native="handleLayout" ></v-icon>
+              <v-icon name="icon-workbench" @click.native="handleLayout" ></v-icon>
+            </el-tooltip>
+            <el-tooltip class="item" effect="dark" content="退出" placement="top-end">
+              <v-icon name="icon-tuichu1"  @click.native="logout"></v-icon>
              </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="退出" placement="top-end">
-          <v-icon name="icon-tuichu1"  @click.native="logout"></v-icon>
-       </el-tooltip>
           </div>
     </el-header>
     <el-container class="demo-container">
@@ -36,6 +39,7 @@ import Cookies from 'js-cookie'
 export default {
   data() {
     return {
+      screenfull: false,
       layout: Cookies.get('layout') ? Cookies.get('layout') : '固定布局'
     }
   },
@@ -51,6 +55,42 @@ export default {
     }
   },
   methods: {
+    toggleScreen() {
+      if (!this.screenfull) {
+        var docElm = document.documentElement
+        if (docElm.requestFullscreen) {
+          docElm.requestFullscreen()
+        } else if (docElm.mozRequestFullScreen) {
+          docElm.mozRequestFullScreen()
+        } else if (docElm.webkitRequestFullScreen) {
+          docElm.webkitRequestFullScreen()
+        } else if (docElm.msRequestFullscreen) {
+          docElm.msRequestFullscreen()
+        } else {
+          this.$message({
+            type: 'warning',
+            message: '除了让你升级浏览器对方没什么好说的！'
+          })
+        }
+        this.screenfull = true
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen()
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen()
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen()
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen()
+        } else {
+          this.$message({
+            type: 'warning',
+            message: '请升级浏览器，不然我是不会理你的！'
+          })
+        }
+        this.screenfull = false
+      }
+    },
     handlerIsCollapse() {
       this.$store.commit('IS_COLLAPSE')
     },
@@ -96,7 +136,6 @@ export default {
 }
 .logout {
   height: 60px;
-  width: 60px;
   float: right;
   text-align: center;
   line-height: 60px;
