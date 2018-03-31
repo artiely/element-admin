@@ -17,7 +17,7 @@
         <v-icon name="icon-xuanxiang" class="menu" @click.native="handlerIsCollapse"></v-icon>
           <div class="logout">
             <el-tooltip class="item" effect="dark" :content="screenfull? '还原': '全屏'" placement="top-end">
-              <v-icon name="icon-send" @click.native="toggleScreen"></v-icon>
+              <v-icon :name="screenfull ? 'icon-smallscreen' : 'icon-send'" @click.native="toggleScreen"></v-icon>
             </el-tooltip>
             <el-tooltip class="item" effect="dark" content="布局" placement="top-end">
               <v-icon name="icon-workbench" @click.native="handleLayout" ></v-icon>
