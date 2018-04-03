@@ -75,6 +75,12 @@ export const asyncRouterMap = [
         meta: {role: ['admin'], auth: true, title: '语言国际化'}
       },
       {
+        path: '/echarts',
+        name: 'Echarts',
+        component: lazyLoading('views/echarts/Index'),
+        meta: {role: ['admin', 'guest'], auth: true, title: '百度图表'}
+      },
+      {
         path: '/editor',
         name: 'Editor',
         component: lazyLoading('views/editor/Editor'),
