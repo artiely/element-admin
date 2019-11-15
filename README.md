@@ -7,11 +7,9 @@
 
 # vue-admin
 
-> vue-admin
 
+ant-design版本 https://github.com/artiely/vue-admin  （推荐）
 
-# demo 
- [http://admin.08tj.com](http://admin.08tj.com) (服务器配置低)
 
 # feature
 1. 菜单权限控制
