@@ -5,8 +5,7 @@
         <div class="markdown">
           <h1>IconFont 图标 <span style="font-size: 16px">点击图标复制代码到粘贴板</span></h1>
           <div>
-            <el-switch v-model="isLabel" active-text="复制标签" inactive-text="复制类名">
-            </el-switch>
+            <el-switch v-model="isLabel" :width="60" active-text="复制标签" inactive-text="复制类名"></el-switch>
           </div>
           <div class="icon_lists">
             <div>
